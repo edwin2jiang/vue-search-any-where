@@ -3,7 +3,7 @@
   <img alt="Version" src="https://img.shields.io/badge/version-0.1-blue.svg?cacheSeconds=2592000" />
 </p>
 
-> 基于Vue的简约搜索，内部聚合Github,百度，google，淘宝等常见的搜索。
+> 基于Vue的简约搜索，内部聚合Github, 百度，google，淘宝等常见的搜索。
 
 ### ✨ [预览地址](https://search.appletest.cn)
 
