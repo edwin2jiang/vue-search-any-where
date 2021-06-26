@@ -1,4 +1,4 @@
-@import './base.css';
+@import "./base.css";
 button,
 input {
   margin: 0px;
@@ -34,13 +34,13 @@ input {
   transition: 0.25s;
   line-height: 20px;
   -webkit-animation-name: delayedFadeIn;
-          animation-name: delayedFadeIn;
+  animation-name: delayedFadeIn;
   -webkit-animation-duration: 2s;
-          animation-duration: 2s;
+  animation-duration: 2s;
   -webkit-animation-iteration-count: 1;
-          animation-iteration-count: 1;
+  animation-iteration-count: 1;
   -webkit-animation-delay: 0s;
-          animation-delay: 0s;
+  animation-delay: 0s;
 }
 #app .time .inner:hover {
   transform: scale(1.2);
@@ -108,4 +108,4 @@ input {
   height: 70px;
   border: 1px solid #eee;
   padding: 6px;
-}/*# sourceMappingURL=index.css.map */
+} /*# sourceMappingURL=index.css.map */

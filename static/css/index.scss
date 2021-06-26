@@ -1,4 +1,4 @@
-@import './base.css';
+@import "./base.css";
 
 button,
 input {
@@ -39,7 +39,7 @@ input {
       animation-iteration-count: 1;
       animation-delay: 0s;
 
-      &:hover{
+      &:hover {
         transform: scale(1.2);
       }
     }
@@ -76,7 +76,7 @@ input {
       display: flex;
 
       .input {
-        font-family: 'PingFang SC', 'Microsoft Yahei', Helvetica, Arial,
+        font-family: "PingFang SC", "Microsoft Yahei", Helvetica, Arial,
           sans-serif;
         height: 100%;
         width: 100%;

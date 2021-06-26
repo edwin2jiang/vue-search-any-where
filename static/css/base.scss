@@ -3,8 +3,9 @@
   padding: 0;
 }
 
-html,body{
-    height: 100%;
+html,
+body {
+  height: 100%;
 }
 
 .pointer {
@@ -12,35 +13,35 @@ html,body{
 }
 
 .i-mask {
-    position: absolute;
-    inset: 0px;
-    background-color: rgba(0, 0, 0, 0.4);
-    transition-property: opacity;
-    transition-duration: 300ms;
-    transition-timing-function: ease;
+  position: absolute;
+  inset: 0px;
+  background-color: rgba(0, 0, 0, 0.4);
+  transition-property: opacity;
+  transition-duration: 300ms;
+  transition-timing-function: ease;
 }
 
 .icon-down {
-    width: 0px;
-    height: 0px;
-    border-style: solid;
-    border-width: 7px 4px 0px;
-    transform: scale(var(--search-ratio));
-    border-color: rgb(204, 204, 204) transparent transparent;
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 7px 4px 0px;
+  transform: scale(var(--search-ratio));
+  border-color: rgb(204, 204, 204) transparent transparent;
 }
 
-.not-selected{
-    user-select:none;
-    -moz-user-select:none; /*火狐*/
-    -webkit-user-select:none; /*webkit浏览器*/
-    -ms-user-select:none; /*IE10*/
-    -khtml-user-select:none; /*早期浏览器*/
+.not-selected {
+  user-select: none;
+  -moz-user-select: none; /*火狐*/
+  -webkit-user-select: none; /*webkit浏览器*/
+  -ms-user-select: none; /*IE10*/
+  -khtml-user-select: none; /*早期浏览器*/
 }
 
-.show{
-    visibility: visible;
+.show {
+  visibility: visible;
 }
 
-.hide{
-    visibility: hidden;
+.hide {
+  visibility: hidden;
 }

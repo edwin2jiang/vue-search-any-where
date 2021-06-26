@@ -7,6 +7,7 @@
     <title>Just search !</title>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.png" />
     <link rel="stylesheet" href="./static/css/index.css" />
+    <script type="text/javascript" src="./static/js/keymaster.js"></script>
 </head>
 
 <body>
@@ -23,8 +24,8 @@
                 <i class="icon-down" style="display: inline-block; margin-left: 6px;"></i>
             </div>
             <div class="input-box">
-                <input type="text" class="input" v-model="input" placeholder="Enter search"
-                    @keydown.enter="search"></input>
+                <input type="text" class="input not-selected" v-model="input" placeholder="Enter search"
+                    @keydown.enter="search" autofocus="autofocus" id="search-input" />
             </div>
             <img class="pointer" :class="[input === ''?'hide':'show']" @click="clear" src="static/img/clear.png"
                 width="16px" height="16px" />
@@ -35,9 +36,8 @@
         <div class="popup-menu" :class="[isChose?'hide':'show']">
             <div class="box">
                 <div class="box-item pointer not-selected" v-for="(item,index) in getUrls" :key="index"
-                    @click="changeUrl(index)">
+                    @click="changeIndex(index)">
                     <img :src="item.icon" alt="图片" width="24" height="24" style="margin-bottom: 10px;" />
-
                     <span style="color: #aaa;line-height: 18px; font-size: 14px;">{{item.name}}</span>
                 </div>
             </div>
@@ -63,17 +63,12 @@
                 isChose: true,
                 active: this.input === '',
                 path: "http://www.baidu.com/s?ie=utf-8&wd=%s",
-                activePath: {
-                    icon: 'static/icon/baidu.jpg',
-                    name: '百度',
-                    path: 'http://www.baidu.com/s?ie=utf-8&wd=%s'
-                },
+                activeIndex: 0,
                 time: ''
             },
             methods: {
-                changeUrl(index) {
-                    this.activePath = this.getUrls[index]
-                    this.path = this.activePath['path']
+                changeIndex(index) {
+                    this.activeIndex = index
                 },
                 popup() {
                     this.isChose = !(this.isChose);
@@ -137,10 +132,36 @@
             computed: {
                 getUrls() {
                     return this.defaultSearch()
+                },
+                activePath() {
+                    let urls = this.getUrls
+                    this.path = urls[this.activeIndex]['path']
+                    return urls[this.activeIndex]
                 }
             },
             mounted() {
+                // 绑定展示事件
+                key('⌘+r, ctrl+`,alt+p', function (event, handler) {
+                    console.log(handler.shortcut, handler.scope);
+                    // TODO: 完成命令模式
+                });
 
+                // 绑定切换事件
+                key('alt+1,alt+2,alt+3,alt+4,alt+5,alt+6', (event, handler) => {
+                    // console.log(handler.shortcut, handler.scope);
+                    var num = handler.shortcut.charAt(handler.shortcut.length - 1)
+                    switch (num) {
+                        case '1':
+                        case '2':
+                        case '3':
+                        case '4':
+                        case '5':
+                        case '6':
+                            this.changeIndex(parseInt(num) - 1)
+                            // document.getElementById('search-input').focus()
+                            break
+                    }
+                })
             }
         });
 
