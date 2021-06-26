@@ -1,0 +1,51 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.i-mask {
+  position: absolute;
+  inset: 0px;
+  background-color: rgba(0, 0, 0, 0.4);
+  transition-property: opacity;
+  transition-duration: 300ms;
+  transition-timing-function: ease;
+}
+
+.icon-down {
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 7px 4px 0px;
+  transform: scale(var(--search-ratio));
+  border-color: #cccccc transparent transparent;
+}
+
+.not-selected {
+  user-select: none;
+  -moz-user-select: none;
+  /*火狐*/
+  -webkit-user-select: none;
+  /*webkit浏览器*/
+  -ms-user-select: none;
+  /*IE10*/
+  -khtml-user-select: none;
+  /*早期浏览器*/
+}
+
+.show {
+  visibility: visible;
+}
+
+.hide {
+  visibility: hidden;
+}/*# sourceMappingURL=base.css.map */

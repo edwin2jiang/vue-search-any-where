@@ -1,0 +1,111 @@
+@import './base.css';
+button,
+input {
+  margin: 0px;
+  padding: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  border: none;
+  outline: none;
+  line-height: 1;
+}
+
+#app {
+  background: url(../img/background.jpg) no-repeat center center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#app .time {
+  position: relative;
+  top: -24%;
+}
+#app .time .inner {
+  color: white;
+  font-size: 36px;
+  font-weight: inherit;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  transition: 0.25s;
+  line-height: 20px;
+  -webkit-animation-name: delayedFadeIn;
+          animation-name: delayedFadeIn;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+}
+#app .time .inner:hover {
+  transform: scale(1.2);
+}
+#app .search-bar {
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  padding: 8px;
+  background: #fff;
+  position: relative;
+  top: -20%;
+  display: flex;
+}
+#app .search-bar .logo {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+#app .search-bar .logo img {
+  width: 100%;
+  height: 100%;
+}
+#app .search-bar .input-box {
+  width: 500px;
+  min-height: 20px;
+  display: flex;
+}
+#app .search-bar .input-box .input {
+  font-family: "PingFang SC", "Microsoft Yahei", Helvetica, Arial, sans-serif;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: white;
+  border-radius: 0px;
+  font-weight: 300;
+  padding-left: calc(var(--search-height) * 0.155);
+  padding-right: 2.5em;
+  font-size: calc(var(--search-height) * 0.304);
+  color: #333333;
+}
+#app .popup-menu {
+  overflow: hidden;
+  border-radius: 20px;
+  position: relative;
+  top: -18%;
+  z-index: 12;
+  display: flex;
+  max-width: 680px;
+  background: #fff;
+}
+#app .popup-menu .box {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+#app .popup-menu .box .box-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 70px;
+  border: 1px solid #eee;
+  padding: 6px;
+}/*# sourceMappingURL=index.css.map */

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Just search !</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.png" />
+    <link rel="stylesheet" href="./static/css/index.css" />
+</head>
+
+<body>
+    <div id="app" @click="check">
+        <div class="time">
+            <div id="show-time" class="inner not-selected">
+
+            </div>
+        </div>
+
+        <div class="search-bar">
+            <div class="not-selected logo pointer" @click.stop="popup">
+                <img :alt="activePath.name" :src="activePath.icon" alt="logo">
+                <i class="icon-down" style="display: inline-block; margin-left: 6px;"></i>
+            </div>
+            <div class="input-box">
+                <input type="text" class="input" v-model="input" placeholder="Enter search"
+                    @keydown.enter="search"></input>
+            </div>
+            <img class="pointer" :class="[input === ''?'hide':'show']" @click="clear" src="static/img/clear.png"
+                width="16px" height="16px" />
+            <div @click="search" type="button" class="pointer" style="margin-left: 4px;">
+                <span style="color: #3d3d3d;" class="not-selected">搜索</span>
+            </div>
+        </div>
+        <div class="popup-menu" :class="[isChose?'hide':'show']">
+            <div class="box">
+                <div class="box-item pointer not-selected" v-for="(item,index) in getUrls" :key="index"
+                    @click="changeUrl(index)">
+                    <img :src="item.icon" alt="图片" width="24" height="24" style="margin-bottom: 10px;" />
+
+                    <span style="color: #aaa;line-height: 18px; font-size: 14px;">{{item.name}}</span>
+                </div>
+            </div>
+        </div>
+
+        <i v-show="!isChose">
+            <div class="i-mask" style="z-index:11">
+                <slot></slot>
+            </div>
+        </i>
+
+    </div>
+
+
+    <script type="text/javascript" src="./static/vue/vue.js"></script>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                input: "",
+                searchType: "baidu",
+                isChose: true,
+                active: this.input === '',
+                path: "http://www.baidu.com/s?ie=utf-8&wd=%s",
+                activePath: {
+                    icon: 'static/icon/baidu.jpg',
+                    name: '百度',
+                    path: 'http://www.baidu.com/s?ie=utf-8&wd=%s'
+                },
+                time: ''
+            },
+            methods: {
+                changeUrl(index) {
+                    this.activePath = this.getUrls[index]
+                    this.path = this.activePath['path']
+                },
+                popup() {
+                    this.isChose = !(this.isChose);
+                },
+                clear() {
+                    this.input = ''
+                },
+                search() {
+                    url = this.switchUrl()
+                    this.input = ''
+                    console.log(url)
+                    window.open(url)
+                },
+                switchUrl() {
+                    return this.path.replace(/%s/, this.input)
+                },
+                check() {
+                    if (this.isChose === false) {
+                        this.isChose = true
+                    }
+                },
+
+                defaultSearch() {
+                    return [
+                        {
+                            icon: 'static/icon/baidu.jpg',
+                            name: '百度',
+                            path: 'http://www.baidu.com/s?ie=utf-8&wd=%s'
+                        }, {
+                            icon: 'static/icon/taobao.png',
+                            name: '淘宝',
+                            path: 'https://s.taobao.com/search?q=%s'
+                        }, {
+                            icon: 'static/icon/google.ico',
+                            name: '谷歌',
+                            path: 'https://www.google.com.hk/search?q=%s'
+                        }, {
+                            icon: 'static/icon/bilbili.ico',
+                            name: 'B站',
+                            path: 'https://search.bilibili.com/all?keyword=%s'
+                        }, {
+                            icon: 'static/icon/cslg.png',
+                            name: '图书馆',
+                            path: 'http://10.28.60.4:8080/opac/openlink.php?strSearchType=title&historyCount=1&strText=%s&doctype=ALL&match_flag=all&displaypg=20&sort=CATA_DATE&orderby=desc&showmode=list&dept=ALL&x=31&y=15'
+                        }, {
+                            icon: 'static/icon/zhihu.ico',
+                            name: '知乎',
+                            path: 'https://www.zhihu.com/search?q=%s&type=content'
+                        }, {
+                            icon: 'static/icon/github.png',
+                            name: 'Github',
+                            path: 'https://github.com/search?q=%s'
+                        }, {
+                            icon: 'static/icon/code.ico',
+                            name: 'Can I Use',
+                            path: 'https://www.caniuse.com/#search=%s'
+                        },
+                    ]
+                }
+            },
+            computed: {
+                getUrls() {
+                    return this.defaultSearch()
+                }
+            },
+            mounted() {
+
+            }
+        });
+
+        function getTime() {
+            var aData = new Date(),
+                time = '',
+                type = 'hh:mm'
+
+            if (type == "hh:mm:ss") {
+                time += (aData.getHours() < 10 ? '0' + aData.getHours() : aData.getHours()) + ":";
+                time += (aData.getMinutes() < 10 ? '0' + aData.getMinutes() : aData.getMinutes()) + ":";
+                time += (aData.getSeconds() < 10 ? '0' + aData.getSeconds() : aData.getSeconds());
+            } else if (type == 'hh:mm') {
+                time += (aData.getHours() < 10 ? '0' + aData.getHours() : aData.getHours()) + ":";
+                time += (aData.getMinutes() < 10 ? '0' + aData.getMinutes() : aData.getMinutes());
+            }
+
+            return time;
+        }
+
+        document.getElementById('show-time').innerHTML = getTime();
+
+        setInterval(function () {
+            document.getElementById('show-time').innerHTML = getTime();
+        }, 1000)
+    </script>
+</body>
+
+</html>
