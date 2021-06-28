@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Just search !</title>
-    <link rel="shortcut icon" type="image/x-icon" href="/favicon.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="./favicon.png" />
     <link rel="stylesheet" href="./static/css/index.css" />
     <script type="text/javascript" src="./static/js/keymaster.js"></script>
 </head>
@@ -55,7 +55,7 @@
     <script type="text/javascript" src="./static/vue/vue.js"></script>
 
     <script>
-        new Vue({
+        var vip = new Vue({
             el: "#app",
             data: {
                 input: "",
@@ -64,7 +64,8 @@
                 active: this.input === '',
                 path: "http://www.baidu.com/s?ie=utf-8&wd=%s",
                 activeIndex: 0,
-                time: ''
+                time: '',
+                vip: false
             },
             methods: {
                 changeIndex(index) {
@@ -85,6 +86,13 @@
                 switchUrl() {
                     return this.path.replace(/%s/, this.input)
                 },
+
+                hideMode() {
+                    console.log("恭喜您成功开启隐藏模式！🎉")
+                    this.vip = true
+                    return true
+                },
+
                 check() {
                     if (this.isChose === false) {
                         this.isChose = true
@@ -131,6 +139,16 @@
             },
             computed: {
                 getUrls() {
+                    // console.log('isVip:', this.vip)
+                    if(this.vip){
+                        return [...this.defaultSearch(),{
+                            icon: 'static/icon/code.ico',
+                            name: 'pronhub',
+                            path: 'https://www.pornhub.com/#qs=%s'
+                        }]
+                    }
+
+
                     return this.defaultSearch()
                 },
                 activePath() {

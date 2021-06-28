@@ -1,5 +1,24 @@
 {
+  "name": "hello-vue-search",
   "dependencies": {
     "vue": "^2.6.14"
-  }
+  },
+  "description": "<h1 align=\"center\">Welcome to vue-search-any-where 👋</h1> <p>   <img alt=\"Version\" src=\"https://img.shields.io/badge/version-0.1-blue.svg?cacheSeconds=2592000\" /> </p>",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xia-2/vue-search-any-where.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xia-2/vue-search-any-where/issues"
+  },
+  "homepage": "https://github.com/xia-2/vue-search-any-where#readme"
 }
